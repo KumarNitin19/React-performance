@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "../ui/Button";
 import Input from "../ui/Input";
 
@@ -7,8 +7,20 @@ const Form = () => {
   //   const [name, setName] = useState("");
   //   const [lastName, setLastName] = useState("");
   const [password, setPassword] = useState("");
+  const [darkMode, setDarkMode] = useState(false);
 
   const handleSubmit = () => {};
+
+  useEffect(() => {
+    if (darkMode) {
+      document.body.style.background = "black";
+      document.body.style.color = "white";
+    } else {
+      document.body.style.background = "white";
+      document.body.style.color = "black";
+    }
+  }, [darkMode]);
+
   return (
     <div className="form">
       {/* <Input type="text" placeholder="Name" />
@@ -23,6 +35,11 @@ const Form = () => {
         type="text"
         placeholder="Password"
         onChange={(e) => setPassword(e.target.value)}
+      />
+      <input
+        type="checkbox"
+        name="mode"
+        onChange={(e) => setDarkMode(e.target.checked)}
       />
       <Button color="primary" variant="contained" onClick={handleSubmit}>
         Submit
