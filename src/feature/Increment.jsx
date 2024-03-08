@@ -1,11 +1,7 @@
-import { useState } from "react";
+import { memo } from "react";
 import Button from "../ui/Button";
 
-const Increment = () => {
-  const [count, setCount] = useState(0);
-  const handleIncrementCount = () => {
-    setCount(count + 1);
-  };
+const Increment = ({ handleIncrementCount, count }) => {
 
   return (
     <div className="increment-root">
@@ -20,4 +16,4 @@ const Increment = () => {
   );
 };
 
-export default Increment;
+export default memo(Increment);
